@@ -4,7 +4,8 @@ class Solution:
             return x
 
         left = 1
-        right = x
+        right = x // 2
+        answer = 0
 
         while left <= right:
             mid = (left + right) // 2
@@ -12,8 +13,9 @@ class Solution:
             if mid * mid == x:
                 return mid
             elif mid * mid < x:
+                answer = mid
                 left = mid + 1
             else:
                 right = mid - 1
 
-        return right
+        return answer
