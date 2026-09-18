@@ -1,24 +1,13 @@
 class Solution:
-    def splitArray(self, nums, k):
-        left = max(nums)
-        right = sum(nums)
+    def hasCycle(self, head):
+        slow = head
+        fast = head
 
-        while left <= right:
-            mid = (left + right) // 2
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-            count = 1
-            current_sum = 0
+            if slow == fast:
+                return True
 
-            for num in nums:
-                if current_sum + num > mid:
-                    count += 1
-                    current_sum = num
-                else:
-                    current_sum += num
-
-            if count <= k:
-                right = mid - 1
-            else:
-                left = mid + 1
-
-        return left
+        return False
